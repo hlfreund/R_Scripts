@@ -56,7 +56,8 @@ getwd()
 
 ##### Beta-diversity #####
 
-## so there are A LOT of metrics of beta-diversity,  
+## the steps...
+# 
 
 ## betadisper - made for comparing multivariate dispersion among group 
 metadata=metadata[rownames(t.otu_counts),] ## reorder metadata to have same rows as relative abundance table * must have same # of rows
@@ -155,4 +156,13 @@ bd.ster<-ggplot(data=df2,aes(x=Group,y=Distance_to_centroid, fill=Group)) + geom
   scale_fill_manual(values = saturation(Bad_pal, 2), name ="Treatment Condition", labels=c("N"="Natural", "S"="Sterile")) 
 
 ggsave(bd.ster,filename = "16S_betadiv_trtmntCondition_10.15.20.pdf", width=15, height=10, dpi=600)
+
+
+#### Notes on Beta Diversity with betadisper() ####
+# reducing the distances produced using any dissimilarity coefficient to principal coordinates, which embeds them within a Euclidean space. 
+# **** The analysis then proceeds by calculating the Euclidean distances between group members and the group centroid on the basis of the principal coordinate axes rather than the original distances. 
+# Non-metric dissimilarity coefficients can produce principal coordinate axes that have negative Eigenvalues. 
+# These correspond to the imaginary, non-metric part of the distance between objects. If negative Eigenvalues are produced, we must correct for these imaginary distances.
+
+# To test if one or more groups is more variable than the others, ANOVA of the distances to group centroids can be performed and parametric theory used to interpret the significance of F
 
