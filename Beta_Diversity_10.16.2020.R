@@ -223,8 +223,8 @@ ggsave(bd.ster,filename = "16S_betadiv_trtmntCondition_10.15.20.pdf", width=15, 
 
 #  head(dist_f)
 
-NMDS_ra = metaMDS(otu.RA.d) ##### non-metric multidimensional scaling of distance matrices to understand distribution of taxa across sites
-## ^ distance matrix based on Bray-Curtis dissimilarities of relativized abundance values
+NMDS_ra = metaMDS(otu_RA, distance='bray') ##### non-metric multidimensional scaling of distance matrices to understand distribution of taxa across sites
+## ^ input for metaMDS must be a site x species matrix - creates distance matrix within function!!!!
 
 class(NMDS_ra)
 
